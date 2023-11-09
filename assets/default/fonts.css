@@ -1,0 +1,51 @@
+@charset "utf-8";
+@font-face {
+	font-family: 'pretendard';
+	font-weight: 300;
+	font-style: normal;
+	src: local('pretendard'),
+		url('../fonts/pretendard/Pretendard-Light.otf') format('opentype');
+}
+@font-face {
+	font-family: 'pretendard';
+	font-weight: 400;
+	font-style: normal;
+	src: local('pretendard'),
+	url('../fonts/pretendard/Pretendard-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family: 'pretendard';
+	font-weight: 500;
+	font-style: normal;
+	src: local('pretendard'),
+	url('../fonts/pretendard/Pretendard-Medium.otf') format('opentype');
+}
+@font-face {
+	font-family: 'pretendard';
+	font-weight: 700;
+	font-style: normal;
+	src: local('pretendard'),
+	url('../fonts/pretendard/Pretendard-Bold.otf') format('opentype');
+}
+
+@font-face {
+	font-family: 'Times Newer Roman';
+	font-weight: 400;
+	font-style: normal;
+	src: local('Times Newer Roman'),
+	url('../fonts/timesnewerroman/TimesNewerRoman-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family: 'Times Newer Roman';
+	font-weight: 700;
+	font-style: normal;
+	src: local('Times Newer Roman'),
+	url('../fonts/timesnewerroman/TimesNewerRoman-Bold.otf') format('opentype');
+}
+@font-face {
+	font-family: 'yg-jalnan';
+	font-weight: 400;
+	font-style: normal;
+	src: local('yg-jalnan'),
+	url('../fonts/jalnan/JalnanOTF.otf') format('opentype');
+}

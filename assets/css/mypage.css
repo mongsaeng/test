@@ -1,0 +1,581 @@
+@charset "UTF-8";
+
+.contents .regedit-area {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #7c394a;
+}
+.contents .regedit-area ~ .title-area {
+  margin-top: 3rem;
+}
+.contents .regedit-area > strong {
+  font-size: 1.6rem;
+  color: #fff;
+}
+.contents .regedit-area .test-info {
+  padding: 1.1rem 7.5rem 0 0;
+  font-size: 0;
+}
+.contents .regedit-area .test-info span {
+  display: inline-block;
+  margin: 0.4rem 0.4rem 0 0;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  vertical-align: middle;
+}
+.contents .regedit-area > .btn {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  font-size: 1.05rem;
+  color: #7c394a;
+}
+.contents .content-box {
+  margin-top: 1.5rem;
+  border: 1px solid #cac3b6;
+  border-radius: 0.75rem;
+}
+.contents .content-box + .content-box {
+  margin-top: 2.4rem;
+}
+.contents .content-box.border {
+  padding-top: 1.5rem;
+  border-width: 1px 0 0 0;
+  border-color: #d9d9d9;
+  border-radius: 0;
+}
+.contents .content-box.border:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.contents .content-box.border + .content-box.border {
+  margin-top: 1.5rem;
+}
+.contents .content-box.test-exp {
+  position: relative;
+  padding-left: 10rem;
+}
+.contents .content-box.test-exp > .tit {
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  width: 9rem;
+}
+.contents .content-box.test-exp > .txt {
+  margin-bottom: 1.2rem;
+  padding-top: 0;
+}
+.contents .content-box.test-exp .tbl-wrap {
+  margin-top: 0;
+}
+.contents .content-box.test-exp .accordion-wrap {
+  margin-top: 0;
+}
+.contents .content-box-row {
+  display: flex;
+}
+.contents .content-box-row .content-box {
+  margin-top: 1.5rem;
+  flex: 1;
+}
+.contents .content-box-row .content-box + .content-box {
+  margin-left: 1rem;
+}
+.contents .content-box .top-area {
+  position: relative;
+  padding: 2rem;
+  border-radius: inherit;
+}
+.contents .content-box-row .top-area {
+  position: relative;
+  padding: 1.5rem 2rem;
+}
+.contents .content-box.warning {
+  margin: 0;
+  padding-left: 5.7rem;
+  border: 0;
+  background: #fff url(../images/common/ico-warning.png) no-repeat left top / 4.2rem auto;
+}
+.contents .content-box .top-area.report {
+  padding: 1rem;
+}
+.contents .content-box .top-area.report .tit {
+  font-size: 0.9rem;
+}
+.contents .content-box .top-area.report .txt {
+  font-size: 0.8rem;
+}
+.contents .content-box .tit:not(label) {
+  padding-top: 1.5rem;
+  font-size: 1.15rem;
+  color: #1f1f1f;
+  font-weight: bold;
+}
+.contents .content-box .tit.large {
+  padding-bottom: 0.7rem;
+  font-size: 1.6rem;
+}
+.contents .content-box .tit.color-red {
+  color: #7c394a;
+}
+.contents .content-box .tit span {
+  display: block;
+  padding-bottom: 0.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.contents .content-box.itsc-id .tit {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+.contents .content-box.itsc-id .tit span {
+  display: inline-block;
+  padding: 0;
+  color: #7c394a;
+  font-weight: bold;
+}
+.contents .content-box .tit:first-child {
+  padding-top: 0 !important;
+}
+.contents .content-box .btn-copy {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  padding: 0 1.4rem;
+  height: 2.5rem;
+  border-radius: 2.5rem;
+  font-size: 0.9rem;
+}
+.contents .content-box .txt {
+  padding: 0.6rem 0 0;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  color: #555;
+}
+.contents .content-box .txt > a {
+  font-size: inherit;
+  color: inherit;
+}
+.contents .content-box .btn-large {
+  display: block;
+  margin: 2rem auto 0;
+  width: 55%;
+  height: 3.4rem;
+  font-size: 1.1rem;
+}
+.contents .content-box .txt.center {
+  text-align: center;
+}
+.contents .content-box .txt:first-child {
+  padding-top: 0;
+}
+.contents .content-box .txt.guide {
+  color: #7c394a;
+}
+.contents .content-box .txt .color-red {
+  color: #7c394a;
+}
+.contents .content-box .txt .active {
+  font-size: 1.15rem;
+  color: #7c394a;
+  font-weight: bold;
+}
+.contents .content-box .txt .underline {
+  text-decoration: underline;
+}
+.contents .content-box .txt2 {
+  font-size: 1.15rem;
+  color: #1f1f1f;
+  font-weight: 500;
+}
+.contents .content-box .txt2.border {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d9d9d9;
+}
+.contents .score-guide > * {
+  padding-top: 1.5rem !important;
+}
+.contents .content-box .btm-area {
+  border-top: 1px solid #cac3b6;
+  padding: 1.5rem 2rem;
+  border-radius: inherit;
+}
+.contents .content-box .top-area ~ .btm-area {
+  position: relative;
+  z-index: 1;
+  margin-top: -0.4rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.contents .content-box .radio-wrap,
+.contents .content-box .chk-wrap {
+  margin-top: 1.5rem;
+}
+.contents .content-box .radio-item,
+.contents .content-box .chk-item {
+  margin-top: 1rem;
+}
+.contents .content-box .radio-item:first-child,
+.contents .content-box .chk-item:first-child {
+  margin-top: 0;
+}
+.contents .content-box .radio-item label,
+.contents .content-box .chk-item label {
+  display: inline-block;
+}
+.contents .reg-wrap {
+  padding-top: 0.8rem;
+}
+.contents .reg-wrap:first-child {
+  padding-top: 0;
+}
+.contents .reg-wrap.border {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d9d9d9;
+}
+.contents .reg-wrap li {
+  position: relative;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  color: #555;
+}
+.contents .reg-wrap li .underline {
+  display: inline-block;
+  font-size: inherit;
+  color: inherit;
+  vertical-align: top;
+  text-decoration: underline;
+}
+.contents .reg-wrap .dot {
+  padding-left: 1.2rem;
+}
+.contents .reg-wrap .dot:after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.575rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 100%;
+  background-color: #555;
+}
+.contents .reg-wrap .dot.bold:after {
+  background-color: #1f1f1f;
+}
+.contents .reg-wrap .dot.bold strong {
+  color: #1f1f1f;
+}
+.contents .reg-wrap .number {
+  padding-left: 1rem;
+}
+.contents .reg-wrap .number .num {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: inherit;
+}
+.contents .reg-wrap .color-red {
+  font-size: inherit;
+  color: #c71815;
+}
+.contents .reg-wrap .hyphen {
+  padding-left: 1rem;
+}
+.contents .reg-wrap .hyphen:after {
+  content: "-";
+  position: absolute;
+  left: 0.3rem;
+  top: 0;
+  font-size: inherit;
+}
+.contents .document-box {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d9d9d9;
+}
+.contents .document-box .reg-wrap {
+  padding: 2rem;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+}
+.contents .document-box .reg-wrap li {
+  margin-top: 1.5rem;
+}
+.contents .document-box .reg-wrap li:first-child {
+  margin-top: 0;
+}
+.contents .content-box .def-list {
+  font-size: 0;
+}
+.contents .content-box .def-list dt {
+  display: inline-block;
+  margin-top: 0.8rem;
+  width: calc(50% - 0.5rem);
+  font-size: 0.8rem;
+  color: #555;
+  font-weight: normal;
+  vertical-align: top;
+}
+.contents .content-box .def-list dd {
+  display: inline-block;
+  margin-top: 0.8rem;
+  margin-left: 1rem;
+  width: calc(50% - 0.5rem);
+  font-size: 0.8rem;
+  color: #555;
+  vertical-align: top;
+}
+.contents .content-box .def-list dt:first-of-type,
+.contents .content-box .def-list dd:first-of-type {
+  margin-top: 0;
+}
+.contents .content-box .center-address {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid #cac3b6;
+}
+.contents .content-box .center-address .btn-show-map {
+  padding-left: 2.35rem;
+  background: url(../images/common/ico-map.png) no-repeat left center / 1.8rem auto;
+  line-height: 1.8rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+.contents .content-box .center-address .btn-trans {
+  height: 2.45rem;
+  font-size: 1.05rem;
+}
+.contents .content-box .ip-area .guide {
+  padding: 2rem 0 0.8rem;
+  font-size: 0.9rem;
+  color: #616161;
+}
+.contents .content-box .ip-area .required-guide {
+  padding-top: 0.8rem;
+  text-align: left;
+}
+.contents .content-box .ip-area .file-field-box label {
+  height: 3rem;
+  border-radius: 0.5rem;
+  line-height: 3rem;
+}
+.contents .procedure-wrap {
+  position: relative;
+  padding-bottom: calc(20% + 0.68rem);
+  font-size: 0;
+}
+.contents .procedure-wrap li {
+  position: relative;
+  display: inline-block;
+  margin-left: 3.4rem;
+  padding-bottom: calc(20% - 2.72rem);
+  width: calc(20% - 2.72rem);
+  height: 0;
+  vertical-align: top;
+}
+.contents .procedure-wrap li:nth-child(1),
+.contents .procedure-wrap li:nth-child(10) {
+  margin-left: 0;
+}
+.contents .procedure-wrap li:nth-child(2):after,
+.contents .procedure-wrap li:nth-child(3):after,
+.contents .procedure-wrap li:nth-child(4):after,
+.contents .procedure-wrap li:nth-child(5):after {
+  content: "";
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  top: 50%;
+  width: 1.9rem;
+  height: 1.8rem;
+  background: no-repeat center / 100% auto;
+  background-image: url(../images/common/ico-arrow-red-right.png);
+  transform: translateY(-50%);
+}
+.contents .procedure-wrap li:nth-child(6) {
+  position: absolute;
+  left: calc(100% - 3.4rem);
+  bottom: 0;
+  transform: translateX(-100%);
+}
+.contents .procedure-wrap li:nth-child(7) {
+  position: absolute;
+  left: calc(60% - 1.3rem);
+  bottom: 0;
+}
+.contents .procedure-wrap li:nth-child(8) {
+  position: absolute;
+  left: calc(40% - 2.05rem);
+  bottom: 0;
+}
+.contents .procedure-wrap li:nth-child(9) {
+  position: absolute;
+  left: calc(20% - 2.7rem);
+  bottom: 0;
+}
+.contents .procedure-wrap li:nth-child(6):before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.75rem);
+  width: 1.9rem;
+  height: 1.8rem;
+  background: no-repeat center / 100% auto;
+  background-image: url(../images/common/ico-arrow-red-down.png);
+  transform: translateX(-50%);
+}
+.contents .procedure-wrap li:nth-child(6):after,
+.contents .procedure-wrap li:nth-child(7):after,
+.contents .procedure-wrap li:nth-child(8):after,
+.contents .procedure-wrap li:nth-child(9):after {
+  content: "";
+  position: absolute;
+  right: calc(100% + 0.75rem);
+  top: 50%;
+  width: 1.9rem;
+  height: 1.8rem;
+  background: no-repeat center / 100% auto;
+  background-image: url(../images/common/ico-arrow-red-left.png);
+  transform: translateY(-50%);
+}
+.contents .procedure-wrap li:nth-child(10) {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.contents .procedure-wrap li:last-child:after {
+  display: none !important;
+}
+.contents .procedure-wrap.pbtType li {
+  width: calc(25% - 2.55rem);
+}
+.contents .procedure-wrap.pbtType li:nth-child(5) {
+  position: absolute;
+  left: calc(100% - 3.4rem);
+  bottom: 0;
+  transform: translateX(-100%);
+}
+.contents .procedure-wrap.pbtType li:nth-child(6) {
+  left: calc(50% - 1.7rem);
+  transform: translateX(0);
+}
+.contents .procedure-wrap.pbtType li:nth-child(7) {
+  left: calc(25% - 2.55rem);
+}
+.contents .procedure-wrap .procedure-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: table;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #cac3b6;
+  border-radius: 1.5rem;
+  background-color: #f9f9f9;
+}
+.contents .procedure-wrap .procedure-item .cell {
+  display: table-cell;
+  padding: 0 0.25rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.contents .procedure-wrap .procedure-item .num {
+  display: block;
+  width: 100%;
+  font-size: 1.2vw;
+  color: #7c394a;
+  font-weight: bold;
+}
+.contents .procedure-wrap .procedure-item .info {
+  width: 100%;
+  padding-top: 0.3rem;
+  line-height: 1.3;
+  font-size: 0.85vw;
+  color: #555;
+  word-break: break-all;
+}
+.contents .report-guide-wrap {
+  font-size: 0;
+}
+.contents .report-guide-item {
+  display: inline-block;
+  margin: 1.5rem 0 0 1.5rem;
+  width: calc(33.33% - 1rem);
+}
+.contents .report-guide-item:nth-child(3n+1) {
+  margin-left: 0;
+}
+.contents .report-guide-item .report-guide-inner {
+  display: flex;
+  align-items: center;
+}
+.contents .report-guide-item .bg {
+  position: relative;
+  min-width: 5rem;
+  min-height: 5rem;
+  border-radius: 100%;
+  background-color: #f9f9f9;
+}
+.contents .report-guide-item .bg:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: no-repeat center / 100% auto;
+  transform: translate(-50%, -50%);
+}
+.contents .report-guide-item .bg.peek:after {
+  background-image: url(../images/common/ico-preview.png);
+}
+.contents .report-guide-item .bg.forId:after {
+  background-image: url(../images/common/ico-id.png);
+}
+.contents .report-guide-item .bg.leak:after {
+  background-image: url(../images/common/ico-rec.png);
+}
+.contents .report-guide-item .bg.sound:after {
+  background-image: url(../images/common/ico-volume.png);
+}
+.contents .report-guide-item .bg.mis:after {
+  background-image: url(../images/common/ico-communicate.png);
+}
+.contents .report-guide-item .bg.other:after {
+  background-image: url(../images/common/ico-emoji.png);
+}
+.contents .report-guide-item .details {
+  padding: 0 0.5rem 0 1rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  color: #1f1f1f;
+  font-weight: 500;
+}
+.contents .report-guide-item .details .sub {
+  display: block;
+  font-size: 0.7rem;
+}
+.contents .learn-guide {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: #f9f9f9;
+}
+.contents .learn-guide .txt {
+  font-size: 1.15rem;
+  color: #1f1f1f;
+  font-weight: 500;
+}
+.contents .learn-guide .reg-wrap {
+  padding-top: 0.4rem;
+}

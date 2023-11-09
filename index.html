@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>G-TELP Global Site</title>
+  <link rel="stylesheet" type="text/css" href="assets/default/reset.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico"/>
+  <script type="text/javascript" src="assets/lib/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="assets/js/common.js"></script>
+  <style type="text/css">
+    html {
+      font-size: 10px;
+      user-select: auto;
+    }
+    #wrap {
+      min-width: 1280px;
+    }
+
+    #header {
+      color: #000;
+      font-size: 18px;
+      text-align: center;
+      text-transform: uppercase;
+      height: 60px;
+      line-height: 60px;
+    }
+
+    #container {
+      height: 100%;
+    }
+
+    #container>.contents {
+      margin: 2% 0;
+      padding-bottom: 50px;
+    }
+
+    #container>.contents table {
+      width: 90%;
+      border-collapse: collapse;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    #container>.contents table thead {
+      border-top: 2px solid #333;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #container>.contents table thead tr th {
+      background: #f6f6f6;
+      height: 36px;
+      vertical-align: middle;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #333;
+    }
+
+    #container>.contents table tbody tr td {
+      height: 36px;
+      vertical-align: middle;
+      color: #333;
+      font-size: 1.3rem;
+      line-height: normal;
+      border-bottom: 1px solid #ddd;
+    }
+
+    #container>.contents table tbody tr .link {
+      text-align: center;
+      padding: 0 1.4rem;
+    }
+
+    .info_msg {
+      color: #fc6e2e;
+      font-size: 0.7em;
+      padding-left: 1.4rem;
+    }
+
+    .progress {
+      border-left: 1px solid #ddd;
+    }
+
+    .ok {
+      background-color: #a50034;
+      color: #fff !important;
+    }
+
+    .ok:before {
+      content: "완료";
+      font-size: 1.4rem;
+    }
+
+    .ing {
+      background-color: rgba(72, 72, 223, 0.322);
+      color: #fff !important;
+    }
+
+    .ing:before {
+      content: "진행중";
+      font-size: 1.4rem;
+    }
+
+    .new {
+      background-color: #6d0022;
+      color: #fff !important;
+    }
+
+    .new:before {
+      content: " ";
+      font-size: 1.4rem;
+    }
+
+    #tabs ul:after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    #tabs ul {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    #tabs ul li {
+      float: left;
+      margin-left: 10px;
+    }
+
+    #tabs ul li:first-child {
+      margin-left: 0;
+    }
+
+    .btn_set {
+      width: 120px;
+      height: 36px;
+      line-height: 36px;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: #ffb9ab;
+    }
+
+    .btn_set.on {
+      background-color: #a50034;
+    }
+
+    .first_line {
+      border-top: 2px solid #333;
+    }
+
+    .top_btn {
+      opacity: 0;
+      transition: all 0.5s ease;
+      position: fixed;
+      right: 25px;
+      bottom: 10px;
+      height: 50px;
+      color: white;
+      border: none;
+      background: black;
+      cursor: pointer;
+    }
+
+    .top_btn.show {
+      opacity: 1;
+    }
+
+    .tab_content {
+      display: none;
+    }
+
+    .tab_content.on {
+      display: block;
+    }
+
+    td.link a {
+      display: block;
+      max-width: 100%;
+      font-size: 1.4rem;
+      color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    td.link a:hover {
+      text-decoration: underline;
+      font-weight: bold;
+      color: #a50034;
+    }
+
+    .category {
+      background: #fafafa;
+    }
+
+    .depth1,
+    .depth2,
+    .depth3 {
+      padding-left: 10px;
+      text-align: left;
+    }
+
+    td.link,
+    .category,
+    .depth1,
+    .depth2,
+    .depth3 {
+      border-left: 1px solid #ddd;
+    }
+
+    tr.del {
+      text-decoration: line-through;
+    }
+
+    td>sup {
+      color: #ea00ff;
+      font-weight: 400;
+      font-size: 0.9rem;
+      vertical-align: super;
+      opacity: 0.8;
+      letter-spacing: 1px;
+    }
+
+    td>sup:before {
+      content: 'Guide';
+    }
+
+    /* 테블릿 세로 (해상도 768px ~ 1023px)*/
+    @media all and (min-width:768px) and (max-width:1024px) {
+      #wrap {
+        min-width: auto;
+      }
+
+      #input-form {
+        margin: 30px 15px;
+      }
+
+      .tab_content {
+        padding: 0 15px;
+      }
+
+      #container>.contents table {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      th,
+      td,
+      col {
+        display: none;
+      }
+
+      .category,
+      .depth1,
+      .link {
+        display: table-cell;
+      }
+    }
+
+    /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
+    @media all and (min-width:480px) and (max-width:767px) {
+      #wrap {
+        min-width: auto;
+      }
+
+      #input-form {
+        margin: 30px 15px;
+      }
+
+      .tab_content {
+        padding: 0 15px;
+      }
+
+      #container>.contents table {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      th,
+      td,
+      col {
+        display: none;
+      }
+
+      .category,
+      .depth1,
+      .link {
+        display: table-cell;
+      }
+    }
+
+    /* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+    @media all and (max-width:479px) {
+      #wrap {
+        min-width: auto;
+      }
+
+      #input-form {
+        margin: 30px 15px;
+      }
+
+      .tab_content {
+        padding: 0 15px;
+      }
+
+      #container>.contents table {
+        width: 100%;
+        table-layout: fixed;
+      }
+
+      th,
+      td,
+      col {
+        display: none;
+      }
+
+      .depth1,
+      .link {
+        display: table-cell;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="header">
+      <div class="header_in">
+        <h1><span> G-TELP Global Site</span></h1>
+      </div>
+    </div>
+
+    <div id="container">
+      <div class="contents">
+        <div id="tabs">
+          <ul>
+            <li class="btn_set on" data-tab="tab_1">코딩리스트</li>
+            <!--<li class="btn_set" data-tab="tab_2">Admin</li>-->
+          </ul>
+
+          <div class="tab_content on" id="tab_1">
+            <table class="coding_list_table">
+              <colgroup>
+                <col class="num" width="5%" />
+                <col class="category" width="15%" />
+                <col class="depth1" width="*" />
+                <col class="depth2" width="*" />
+                <col class="depth3" width="*" />
+                <col class="link" width="25%" />
+                <col class="progress" width="7%" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th class="num first">NUM</th>
+                  <th class="category">카테고리</th>
+                  <th class="depth1">Depth1</th>
+                  <th class="depth2">Depth2</th>
+                  <th class="depth3">Depth3</th>
+                  <th class="link">링크<br /><span class="info_msg">&#45; 아래 링크를 클릭하시면 해당 페이지로 이동합니다.</span></th>
+                  <th class="progress">진행</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" style="color: #a50034;">대문 페이지</td>
+                  <td class="depth1"></td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/gate/gate.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" style="color: #a50034;">메일링</td>
+                  <td class="depth1"></td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mail/mail.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="4">규정</td>
+                  <td class="depth1">Privacy Policy</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/terms/privacyPolicy.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Terms of Service</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/terms/termsOfService.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">ITSC&G-TELP Trademarks</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/terms/trademarks.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Payment, Refund & Cancellation</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/terms/prc.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="10">Popup</td>
+                  <td class="depth1">기본 Alert</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/alert.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Forgot Password</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/forgotPassword.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Location => 고사장 위치</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/centerLocation.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Coupon => 쿠폰등록</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/redeemCoupon.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">비밀번호 찾기 메일 발송</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/messageSent.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">편의시설 요청</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/requestAccommodations.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">연구 보조금</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/researchGrants.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">접수/응시 현황 상세 => 성적확인</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/myScore.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">부정행위 처리규정</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/regulations.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Partners > Agents</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/popup/agents.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category">Main</td>
+                  <td class="depth1">메인페이지</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/main/main.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="4">Login</td>
+                  <td class="depth1">로그인</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/login/login.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">회원가입</td>
+                  <td class="depth2">ID / Password</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/login/createAnAccount01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">개인정보 입력</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/login/createAnAccount02.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">입력정보 확인</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/login/reviewAndSubmit.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="5">ITSC Group</td>
+                  <td class="depth1">About ITSC</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/group/aboutITSC.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Careers</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/group/careers.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Disabilities</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/group/disabilities.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">News & Insights</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/group/newsAndInsights.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Contact Us</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/group/contactUs.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="13">Take an English Test</td>
+                  <td class="depth1">Book a Test</td>
+                  <td class="depth2">G-TELP Speaking Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/btGst.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Writing Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/btGwt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Level Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/btGlt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Business Speaking Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/btGbst.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Business Writing Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/btGbwt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Junior Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/btGjt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Take a Practice test</td>
+                  <td class="depth2">G-TELP Speaking Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/tpGst.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Writing Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/tpGwt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Level Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/tpGlt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Business Speaking Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/tpGbst.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Business Writing Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/tpGbwt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP Junior Test	</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/tpGjt.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">FAQ</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/takeAnEngTest/faq01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="3">Score use</td>
+                  <td class="depth1">For Test Takers</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/scoreUse/forTestTakers.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">For College Admissions Officers</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/scoreUse/forCollege.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">For Corporate Personnel Managers</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/scoreUse/forCorporate.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="12">Our Products</td>
+                  <td class="depth1">English Assessments</td>
+                  <td class="depth2">Overview</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/overview.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Speaking Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/speakingTest.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Writing Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/writingTest.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Reading & Listening Test </td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/rAndlTest.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Business Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/businessTest.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Junior Test</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/juniorTest.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Test Solutions</td>
+                  <td class="depth2">Remote Proctoring Service</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/remoteProctoringService.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Education</td>
+                  <td class="depth2">Online Lessons</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/onlineLessons.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">GST Intermediate</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/gstIntermediate.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">GWT Intermediate</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/gwtIntermediate.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">GLT Intermediate</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/gltIntermediate.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Study Abroad Connect</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/ourProducts/studyAbroadConnect.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="3">Test Research</td>
+                  <td class="depth1">Research Reports</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/testResearch/researchReports.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Research Grants</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/testResearch/researchGrants.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Researchers</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/testResearch/researchers.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="4">Partners</td>
+                  <td class="depth1">Global Partners</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/partners/globalPartners.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">International Distributors</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/partners/interDistributors.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Agents</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/partners/agents.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Testing Centers</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/partners/testingCenters.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+
+                <tr>
+                  <td class="num"></td>
+                  <td class="category" rowspan="26">My Page</td>
+                  <td class="depth1">My Test</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/myTest.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Register</td>
+                  <td class="depth2">Background Information</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/register01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Step 1</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/register02.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Step 2</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/register03.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Step 3</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/register04.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Step 4</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/register05.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Step 4 - 결제 완료</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/register06.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">접수 / 응시 현황</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/registrationTest_status_detail.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">상세페이지</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/registrationTest_status_detail_.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">재채점 신청</td>
+                  <td class="depth2">Step 1</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/requestScoreReview.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Step 2</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/payment.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">시험 일정</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/testSchedule.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Test Day Information</td>
+                  <td class="depth2">G-TELP IBT At Home</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/testDayInfo01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP IBT At Center</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/testDayInfo02.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">G-TELP PBT Offline</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/testDayInfo03.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">ITSC ID</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/itscID.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">My Coupon</td>
+                  <td class="depth2"></td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/myCoupon.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">1:1 inquiry</td>
+                  <td class="depth2">목록</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/inquiry01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">문의하기</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/inquiry02.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">문의 완료</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/inquiry03.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Cheating Report</td>
+                  <td class="depth2">부정행위 처리규정</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/cheatingReport01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">부정행위 신고</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/cheatingReport02.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1">Personal Information</td>
+                  <td class="depth2">개인정보수정</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/personalInfo01.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">Accommodations</td>
+                  <td class="depth3">List</td>
+                  <td class="link">
+                    <a href="./html/mypage/personalInfo02.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2"></td>
+                  <td class="depth3">Detail</td>
+                  <td class="link">
+                    <a href="./html/mypage/personalInfo03.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+                <tr>
+                  <td class="num"></td>
+                  <td class="depth1"></td>
+                  <td class="depth2">비밀번호 변경</td>
+                  <td class="depth3"></td>
+                  <td class="link">
+                    <a href="./html/mypage/personalInfo04.html" target="_blank"></a>
+                  </td>
+                  <td class="ok"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" class="top_btn">UP</button>
+  </div>
+  <script>
+    var $tr = $('tbody > tr');
+    $(function () {
+      var tds = $(".coding_list_table tr td:first-child");
+      for (var i = 0; i < tds.length; i++) {
+        $(tds[i]).html(i + 1);
+        var $link = $tr.eq(i).find('td.link > a');
+        var linkVal = $link.attr('href');
+        linkVal = linkVal.split('/');
+        linkVal = linkVal[linkVal.length - 1];
+        $link.text(linkVal);
+      }
+    });
+    $(function () {
+      var tds = $(".admin_coding_list_table tr td:first-child");
+      for (var i = 0; i < tds.length; i++) {
+        $(tds[i]).html(i + 1);
+        var $link = $tr.eq(i).find('td.link > a');
+        var linkVal = $link.attr('href');
+        linkVal = linkVal.split('/');
+        linkVal = linkVal[linkVal.length - 1];
+        $link.text(linkVal);
+      }
+    });
+
+    function tab() {
+      $("#tabs .btn_set").click("on", function () {
+        var tab_id = $(this).attr("data-tab");
+
+        $("#tabs .btn_set").removeClass("on");
+        $(".tab_content").removeClass("on");
+        $(this).addClass("on");
+        $("#" + tab_id).addClass("on");
+      });
+    }
+
+    tab();
+  </script>
+</body>
+
+</html>
